@@ -1,0 +1,31 @@
+REM POKER
+N = 100
+FOR k = 1 TO N
+    C2 = 0
+    FOR I = 1 TO 5
+        11 P13(I) = 1 + INT(RND * 52)
+        REM  PRINT P13(I);
+        FOR j1 = 1 TO I - 1
+            IF P13(I) = P13(j1) THEN 11
+        NEXT j1
+        REM INPUT X$
+        A(I) = (P13(I) MOD 13)
+        PALO(I) = INT((P13(I) - 1) / 13) + 1
+        IF A(I) = 0 THEN A(I) = 13
+        PRINT A(I), PALO(I), P13(I)
+    NEXT I
+    INPUT X$
+    PRINT
+    FOR I = 1 TO 4
+        FOR j = I + 1 TO 5
+            IF A(I) = A(j) THEN C2 = C2 + 1
+        NEXT j
+    NEXT I
+    f(C2) = f(C2) + 1
+NEXT k
+PRINT " PROB naDA  = ", f(0) / N
+PRINT " PROB 1 PAR  = ", f(1) / N
+PRINT " PROB 2 PARES  = ", f(2) / N
+PRINT " PROB 1 trio  = ", f(3) / N
+PRINT " PROB FULL  = ", f(4) / N
+PRINT " PROB poker  = ", f(6) / N
